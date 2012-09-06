@@ -13,23 +13,7 @@
   :author "Andreas Koestler <andreas.koestler@gmail.com>"
   :license "Public Domain"
   :depends-on (#:cl-ring-core #:cl-ring-dev #:cl-ring-hunchentoot-adapter)
-  :components ((:file "package")
-               (:file "cl-ring")))
+  :components ((:file "package")))
 
-(defsystem #:cl-ring-core
-  :serial t
-  :components ((:file "package")
-	       (:file "cl-ring-core")))
-
-(defsystem #:cl-ring-hunchentoot-adapter
-  :serial t
-  :depends-on (#:hunchentoot #:cl-annot)
-  :components ((:file "package")
-	       (:file "cl-ring-hunchentoot-adapter")))
-
-(defsystem #:cl-ring-dev
-  :serial t
-  :components ((:file "package")
-	       (:file "cl-ring-dev")))
 				     
 
