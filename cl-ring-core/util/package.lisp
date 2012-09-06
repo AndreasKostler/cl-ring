@@ -1,4 +1,4 @@
 ;;;; package.lisp
 
-(defpackage #:cl-ring-core
+(defpackage #:cl-ring-util
   (:use #:cl))
