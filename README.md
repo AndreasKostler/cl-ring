@@ -10,9 +10,9 @@ The SPEC file at the root of this distribution provides a complete description o
 
 ## Libraries
 
-* cl-ring - essential functions for handling parameters, cookies and more
+* cl-ring-core - essential functions for handling parameters, cookies and more
 * cl-ring-devel - functions for developing and debugging cl-ring applications
-* cl-ring-hunchentoot-adapter - a cl-ring adapter that uses the Hunchentoot webserver
+* cl-ring-hunchentoot-adapter - a cl-ring adapter for the Hunchentoot web server 
 
 ## Installation
 
@@ -33,10 +33,10 @@ Create a new project with [Quickproject](https://github.com/xach/quickproject):
 ```common-lisp
 (ql:quickload "quickproject")
 (quickproject (quickproject:make-project "~/src/lisp/my-app/"
-                             :depends-on '(cl-ring))
+                             :depends-on '(cl-ring-hunchentoot-adapter))
 ```
 
-Next, edit ~/src/lisp/may-app/my-app.lisp:
+Next, edit ~/src/lisp/my-app/my-app.lisp:
 
 ```common-lisp
 (in-package :my-app)
