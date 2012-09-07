@@ -18,12 +18,22 @@
   
 @export
 (defun putval-in (m ks v)
-  "Associates a value in a nested alist, where keys is a sequence of keys
- and val is the new value and returns a new nested alist. If any levels do not exist, alists will be created."
+  "Associates a value in a nested map, where keys is a sequence of keys
+ and val is the new value and returns a new nested map. If any levels do not exist, maps will be created."
   (destructuring-bind (k &rest ks) ks
     (if ks
 	(putval m k (putval-in (getval m k) ks v))
 	(putval m k v))))
+
+@export 
+(defun update-in (m ks fn)
+  "Applies a function to the value in a nested map, where keys is a sequence of keys
+and fn is the function to be applied and returns a new nested map. If any levels do not exist, maps will be created."
+  (destructuring-bind (k &rest ks) ks
+    (if ks
+	(putval m k (update-in (getval m k) ks fn))
+	(putval m k (funcall fn (getval m k))))))
+
 
 @export
 (defun putval-cons (m k v)
@@ -43,4 +53,6 @@
 
 @export
 (defun merge-ms (&rest ms)
+  "Merges the maps. If there are duplicate keys, the values of the last (left-to-right)
+take precedence"
   (reduce #'merge-ms* (rest ms) :initial-value (first ms)))
