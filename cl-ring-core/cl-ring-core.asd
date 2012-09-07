@@ -13,6 +13,7 @@
   :depends-on (#:cl-annot #:cl-ppcre)
   :components ((:module :util
 			:components ((:file "package")
+				     (:file "common")
 				     (:file "data")
 				     (:file "mime-type")
 				     (:file "response")))))
