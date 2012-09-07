@@ -95,7 +95,7 @@
 (defun ext-mime-type (filename &rest mime-types)
   "Get the mimetype from the filename extension. Takes an optional alist of
   extensions to mimetypes that overrides values in the default-mime-types map."
-  (let ((mime-types (merge-alists default-mime-types mime-types)))
+  (let ((mime-types (merge-ms default-mime-types mime-types)))
     (getval mime-types (filename-ext filename))))
 
 
