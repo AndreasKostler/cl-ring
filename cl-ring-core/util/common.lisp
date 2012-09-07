@@ -37,3 +37,35 @@
 	  (T 
 	   args))))
 	    
+@export
+(defun replace-all (s match replacement &key (preserve-case T))
+  "Replaces all instance of match with replacement in s. 
+match/replacement can be:
+string / string 
+char / char
+pattern - if regex-p flag is set. 
+See also replace+."
+  (cl-ppcre:regex-replace-all match s replacement :preserve-case preserve-case))
+
+
+@export
+(defun replace+ (s match replacement &key (preserve-case T))
+ "Replaces the first instance of match with replacement in s.
+match/replacement can be:
+char / char
+string / string
+pattern - if regex-p flag is set.
+See also replace-all"
+  (cl-ppcre:regex-replace match s replacement :preserve-case preserve-case))
+
+@export 
+(defun str (&rest strings)
+  (if (> (length strings) 1)
+      (reduce (lambda (acc s)
+		(concatenate 'string acc s))
+	      (mapcar (lambda (x) (format nil "~A" x)) (rest strings))
+	      :initial-value (first strings))
+      (car strings)))
+
+
+
