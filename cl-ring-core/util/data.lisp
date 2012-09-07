@@ -25,6 +25,14 @@
 	(putval m k (putval-in (getval m k) ks v))
 	(putval m k v))))
 
+@export
+(defun getval-in (m ks)
+  "Returns the value in a nested map, where keys is a sequence of keys"
+  (destructuring-bind (k &rest ks) ks
+    (if ks
+	(getval-in (getval m k) ks)
+	(getval m k))))
+
 @export 
 (defun update-in (m ks fn)
   "Applies a function to the value in a nested map, where keys is a sequence of keys
