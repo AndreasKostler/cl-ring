@@ -1,5 +1,3 @@
-;;;; cl-ring-core.lisp
-
 (in-package #:cl-ring-util)
 (annot:enable-annot-syntax)
 
@@ -34,19 +32,23 @@
 
 ;; TODO: File and static resource responses
 
+@export
 (defun status (resp status)
   "Returns an updated cl-ring response with the given status."
   (putval resp :status status))
 
+@export
 (defun header (resp name value)
   "Returns an updated Ring response with the specified header added."
   (putval-in resp `(:headers ,name) (format nil "~A" value)))
 
+@export
 (defun content-type (resp content-type)
   "Returns an updated Ring response with the a Content-Type header corresponding
   to the given content-type."
   (header resp :Content-Type content-type))
 
+@export
 (defun charset (resp charset)
   "Returns an updated cl-ring response with the supplied charset added to the
   Content-Type header."
@@ -56,11 +58,13 @@
           (replace-all ";\\s*charset=[^;]*" "")
           (str "; charset=" charset)))))
 
+@export
 (defun set-cookie (resp name value &rest opts)
   "Sets a cookie on the response. Requires the handler to be wrapped in the
   wrap-cookies middleware."
   (putval-in resp `(:cookies ,name) (merge-ms `((:value . ,value)) opts)))
 
+@export
 (defun responsep (resp)
   "True if the supplied value is a valid cl-ring response."
   (and (consp resp)
