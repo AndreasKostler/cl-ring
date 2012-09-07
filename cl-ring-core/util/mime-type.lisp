@@ -85,7 +85,6 @@
    ("xwd"   . "image/x-xwindowdump")
    ("zip"   . "application/zip")))
 
-;TODO use cl-ppre
 (defun filename-ext (filename)
   "Returns the file extension of a filename or filepath."
   (cl-ppcre:register-groups-bind (first)
