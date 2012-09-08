@@ -69,6 +69,7 @@ See also replace-all"
 
 @export
 (defun split (regex string &key (limit nil))
+  "Returns a list of substrings of string split by regex." 
   (cl-ppcre:split regex string :limit limit))
 
 @export
@@ -79,10 +80,12 @@ and puts spaces between the elements."
 
 @export
 (defun starts-with (string prefix)
+  "Returns true if string starts-with prefix."
   (and (>= (length string) (length prefix))
        (string= (subseq string 0 (length prefix)) prefix)))
 
 @export
 (defun make-keyword (name) 
+  "Creates a keyword from name."
   (values (intern (string-upcase name) "KEYWORD")))
 
