@@ -67,5 +67,7 @@ See also replace-all"
 	      :initial-value (first strings))
       (car strings)))
 
-
-
+@export
+(defun starts-with (string prefix)
+  (and (>= (length string) (length prefix))
+       (string= (subseq string 0 (length prefix)) prefix)))
