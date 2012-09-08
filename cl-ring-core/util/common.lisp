@@ -68,6 +68,16 @@ See also replace-all"
       (car strings)))
 
 @export
+(defun split (regex string &key (limit nil))
+  (cl-ppcre:split regex string :limit limit))
+
+@export
+(defun join (strings &optional (sep " "))
+  "Concatenates a list of strings
+and puts spaces between the elements."
+    (format nil (format nil "~~{~~A~~^~A~~}" sep) strings)) 
+
+@export
 (defun starts-with (string prefix)
   (and (>= (length string) (length prefix))
        (string= (subseq string 0 (length prefix)) prefix)))
@@ -75,3 +85,4 @@ See also replace-all"
 @export
 (defun make-keyword (name) 
   (values (intern (string-upcase name) "KEYWORD")))
+
