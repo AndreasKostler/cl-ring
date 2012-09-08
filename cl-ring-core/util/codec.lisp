@@ -4,6 +4,7 @@
 ;; The following functions are a (almost identical) carbon copy of the respective
 ;; hunchentoot functions. Thanks Edi!
 
+@export
 (defun url-decode (string &optional (external-format :utf8))
   "Decodes a URL-encoded STRING which is assumed to be encoded using
 the external format EXTERNAL-FORMAT."
@@ -48,6 +49,7 @@ the external format EXTERNAL-FORMAT."
            (upgrade-vector vector 'character :converter #'code-char))
           (t (octets-to-string vector :external-format (flexi-streams:make-external-format external-format))))))
 
+@export
 (defun url-encode (string &optional (external-format :utf8))
   "URL-encodes a string using the external format EXTERNAL-FORMAT."
   (with-output-to-string (s)

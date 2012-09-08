@@ -14,6 +14,7 @@
   :components ((:module :util
 			:serial t
 			:components ((:file "package")
+				     (:file "codec")
 				     (:file "common")
 				     (:file "data")
 				     (:file "mime-type")
