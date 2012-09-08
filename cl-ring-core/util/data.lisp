@@ -70,7 +70,7 @@ take precedence"
   (car m))
 
 @export
-(defun var (m)
+(defun val (m)
   (cdr m))
 
 @export
