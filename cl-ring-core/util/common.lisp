@@ -71,3 +71,7 @@ See also replace-all"
 (defun starts-with (string prefix)
   (and (>= (length string) (length prefix))
        (string= (subseq string 0 (length prefix)) prefix)))
+
+@export
+(defun make-keyword (name) 
+  (values (intern (string-upcase name) "KEYWORD")))
