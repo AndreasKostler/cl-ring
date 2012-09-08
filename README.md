@@ -59,7 +59,7 @@ A webserver will now be running at <http://localhost:3000/>
 ## Thanks
 
 This project borrows heavily from Ring;
-thanks to Mark McGranaghan and the Clojure communitu for their work.
+thanks to Mark McGranaghan and the Clojure community for their work.
 
 ## License
 
