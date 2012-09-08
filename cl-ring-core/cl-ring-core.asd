@@ -12,9 +12,16 @@
   :license "Public Domain"
   :depends-on (#:cl-annot #:cl-ppcre #:flexi-streams)
   :components ((:module :util
+			:serial t
 			:components ((:file "package")
 				     (:file "common")
 				     (:file "data")
 				     (:file "mime-type")
-				     (:file "response")))))
+				     (:file "response")))
+	       (:module :middleware
+			:serial t
+			:components ((:file "package")
+				     (:file "content-type")
+				     (:file "params")))))
+
 			 
