@@ -10,7 +10,7 @@
   :description "cl-ring is a common lisp web applications library inspired by Clojure's Ring"
   :author "Andreas Koestler <andreas.koestler@gmail.com>"
   :license "Public Domain"
-  :depends-on (#:cl-annot #:cl-ppcre)
+  :depends-on (#:cl-annot #:cl-ppcre #:flexi-streams)
   :components ((:module :util
 			:components ((:file "package")
 				     (:file "common")
