@@ -52,8 +52,8 @@ and fn is the function to be applied and returns a new nested map. If any levels
 	    (if cur
 		(cons v (if (consp cur) cur (list cur)))
 		v))))
- 
-(defun merge-ms* (m1 m2)
+
+(defun merge-2-ms (m1 m2)
   (loop for (k . v) in m1
      unless (getval m2 k)
      collecting `(,k . ,v) into l
@@ -63,4 +63,30 @@ and fn is the function to be applied and returns a new nested map. If any levels
 (defun merge-ms (&rest ms)
   "Merges the maps. If there are duplicate keys, the values of the last (left-to-right)
 take precedence"
-  (reduce #'merge-ms* (rest ms) :initial-value (first ms)))
+  (reduce #'merge-2-ms (rest ms) :initial-value (first ms)))
+
+@export 
+(defun key (m)
+  (car m))
+
+@export
+(defun var (m)
+  (cdr m))
+
+@export
+(defun merge-ms-with (fn &rest maps)
+  "Returns a map that consists of the rest of the maps consed onto
+  the first.  If a key occurs in more than one map, the mapping(s)
+  from the latter (left-to-right) will be combined with the mapping in
+  the result by calling (fn val-in-result val-in-latter)."
+  (labels ((merge-entry (m e)
+	     (let ((k (key e))
+		   (v (val e)))
+	       (if (getval m k)
+		   (putval m k (funcall fn (getval m k) v))
+		   (putval m k v))))
+	   (merge2 (map1 map2)
+	     (reduce #'merge-entry map2 :initial-value map1)))
+    (when (some #'identity maps)
+      (reduce #'merge2 maps))))
+
