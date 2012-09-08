@@ -2,7 +2,7 @@
 (annot:enable-annot-syntax)
 
 (defun parse-params (params encoding)
-  (let ((params (url-encode params encoding)))
+  (let ((params (form-encode params encoding)))
     (if (consp params) params nil)))
 
 
