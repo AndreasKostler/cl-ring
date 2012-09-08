@@ -2,7 +2,7 @@
 (annot:enable-annot-syntax)
 
 @export
-(defvar default-mime-types
+(defparameter *default-mime-types*
   `(("7z"   . "application/x-7z-compressed")
    ("aac"   . "audio/aac")
    ("ai"    . "application/postscript")
@@ -85,18 +85,12 @@
    ("xwd"   . "image/x-xwindowdump")
    ("zip"   . "application/zip")))
 
-(defun filename-ext (filename)
-  "Returns the file extension of a filename or filepath."
-  (cl-ppcre:register-groups-bind (first)
-      ("\\.([^./\]+)$" filename)
-    first))
-
 @export
 (defun ext-mime-type (filename &rest mime-types)
   "Get the mimetype from the filename extension. Takes an optional alist of
   extensions to mimetypes that overrides values in the default-mime-types map."
   (let ((mime-types (merge-ms default-mime-types mime-types)))
-    (getval mime-types (filename-ext filename))))
+    (getval mime-types (pathname-type filename))))
 
 
 ;; (re-find #"\.([^./\\]+)$" filename))
