@@ -23,6 +23,9 @@
 			:serial t
 			:components ((:file "package")
 				     (:file "content-type")
-				     (:file "params")))))
+				     (:file "params")
+				     (:file "flash")))))
+
+
 
 			 
