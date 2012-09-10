@@ -23,8 +23,8 @@ Using [Quicklisp](https://www.quicklisp.org/), put the cl-ring sources in your l
 
 ## Documentation
 
-* [Wiki](https://github.com/ring-clojure/ring/wiki)
-* [API docs](http://ring-clojure.github.com/ring)
+* [Wiki](https://github.com/AndreasKostler/cl-ring/wiki)
+* [API docs]
 
 ## Getting started
 
